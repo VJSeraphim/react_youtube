@@ -9,9 +9,11 @@ const Feed = () => {
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
-        api(`searcj?part=snippet&q=${selectedCategory}`)
+        setVideos(null)
+
+        api(`search?part=snippet&q=${selectedCategory}`)
         .then((data) => setVideos(data.items))
-    }, [])
+    }, [selectedCategory])
 
     return (
 

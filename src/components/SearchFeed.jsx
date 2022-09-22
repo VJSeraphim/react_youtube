@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Box, Typography } from '@mui/material'
 import { Videos } from './'
 import { api } from '../utils/api'
+import { useParams } from 'react-router-dom'
 
-const Feed = () => {
-
-    const [selectedCategory, setSelectedCategory] = useState('New')
+const SearchFeed = () => {
+    const { searchTerm } = useParams()
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
-        api(`searcj?part=snippet&q=${selectedCategory}`)
+        api(`search?part=snippet&q=`)
         .then((data) => setVideos(data.items))
     }, [])
 
@@ -22,15 +22,16 @@ const Feed = () => {
             <Typography variant="h4" fontWeight="bold" mb={2} sx={{
                 color: 'white'
             }}>
-                {selectedCategory} <span style={{
+                Search Results for: <span style={{
                     color: '#F31503'
                 }}>
-                    videos
-                </span>
+                    {searchTerm}
+                </span> videos
             </Typography>
+
             <Videos videos={videos} />
         </Box>
     )
 }
 
-export default Feed
+export default SearchFeed
