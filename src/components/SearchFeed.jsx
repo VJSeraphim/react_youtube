@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 
 const SearchFeed = () => {
     const { searchTerm } = useParams()
-    const [videos, setVideos] = useState([])
+    const [videos, setVideos] = useState(null)
 
     useEffect(() => {
         api(`search?part=snippet&q=`)

@@ -9,7 +9,7 @@ const Feed = () => {
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
-        setVideos(null)
+        // setVideos([])
 
         api(`search?part=snippet&q=${selectedCategory}`)
         .then((data) => setVideos(data.items))
@@ -25,7 +25,7 @@ const Feed = () => {
             }}>
                 <Sidebar 
                     selectedCategory={selectedCategory}
-                    setSelectedCategory={selectedCategory}
+                    setSelectedCategory={setSelectedCategory}
                 />
 
                 <Typography className="copyright" variaht="body2" sx={{
@@ -43,7 +43,7 @@ const Feed = () => {
                     color: 'white'
                 }}>
                     {selectedCategory} <span style={{
-                        color: '#F31503'
+                        color: '#FC1503'
                     }}>
                         videos
                     </span>

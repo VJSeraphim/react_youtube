@@ -7,8 +7,8 @@ import { api } from '../utils/api'
 
 const ChannelDetail = () => {
     const { id } = useParams()
-    const [channelDetail, setChannelDetail] = useState(null)
-    const [videos, setVideos] = useState([])
+    const [channelDetail, setChannelDetail] = useState()
+    const [videos, setVideos] = useState(null)
 
     useEffect(() => {
       api(`channels?part="snippet&id=${id}`)
