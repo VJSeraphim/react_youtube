@@ -6,12 +6,12 @@ import { useParams } from 'react-router-dom'
 
 const SearchFeed = () => {
     const { searchTerm } = useParams()
-    const [videos, setVideos] = useState(null)
+    const [videos, setVideos] = useState([])
 
     useEffect(() => {
-        api(`search?part=snippet&q=`)
+        api(`search?part=snippet&q=${searchTerm}`)
         .then((data) => setVideos(data.items))
-    }, [])
+    }, [searchTerm])
 
     return (
         <Box p={2} sx={{
